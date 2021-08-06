@@ -1,0 +1,10 @@
+@use '../utils' as *;
+
+.header {
+	font-size: rem(50);
+	color: var(--text);
+	padding: rem(30) rem(30) 0 rem(30);
+	font-weight: 700;
+	text-align: center;
+	margin: rem(20) 0;
+}

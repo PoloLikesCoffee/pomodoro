@@ -1,0 +1,45 @@
+@use '../utils' as *;
+
+.menu-container {
+	z-index: 500;
+	position: relative;
+	margin: rem(50) 0;
+
+	&__button-container {
+		list-style-type: none;
+		display: flex;
+		justify-content: space-between;
+		background-color: var(--background-timer);
+		width: rem(336);
+		border-radius: rem(30);
+		padding: rem(5);
+		margin: 0 auto;
+	}
+
+	&__button {
+		width: rem(100);
+		height: rem(48);
+		cursor: pointer;
+		border: none;
+		border-radius: rem(25);
+		margin: 0 rem(1);
+		opacity: 0.5;
+		font-weight: 400;
+		color: var(--text);
+		background-color: var(--background-timer);
+		text-align: center;
+	}
+
+	&__button:hover,
+	&__button:focus {
+		opacity: 1;
+		color: var(--text-dark);
+		background-color: var(--accent-color);
+	}
+
+	.focus {
+		opacity: 1;
+		color: var(--text-dark);
+		background-color: var(--accent-color);
+	}
+}

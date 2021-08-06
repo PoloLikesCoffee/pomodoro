@@ -1,0 +1,62 @@
+@use '../utils' as *;
+
+.timer-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: rem(300);
+	height: rem(300);
+	border-radius: 50%;
+	margin: 0 auto;
+	background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
+	box-shadow: rem(-50) rem(-50) rem(80) #272c5a, rem(50) rem(50) rem(80) #121530;
+
+	&__display {
+		background-color: var(--background-timer);
+		width: rem(260);
+		height: rem(260);
+		border-radius: 50%;
+		display: flex;
+		flex-direction: column;
+		justify-items: center;
+		align-items: center;
+		position: relative;
+	}
+
+	.mode-text {
+		position: absolute;
+		top: rem(50);
+		font-family: var(--font-default);
+		font-weight: bold;
+		font-size: 16px;
+		text-transform: uppercase;
+		color: var(--text);
+		text-align: center;
+	}
+
+	span {
+		margin: auto;
+		font-size: rem(70);
+		font-weight: 700;
+		color: var(--text);
+		display: flex;
+		justify-items: center;
+		align-items: center;
+	}
+
+	.btn-start__pause {
+		position: absolute;
+		bottom: rem(50);
+		font-family: var(--font-default);
+		font-weight: bold;
+		font-size: 16px;
+		text-transform: uppercase;
+		width: rem(130);
+		height: rem(30);
+		cursor: pointer;
+		border: none;
+		color: var(--text);
+		text-align: center;
+		background-color: transparent;
+	}
+}

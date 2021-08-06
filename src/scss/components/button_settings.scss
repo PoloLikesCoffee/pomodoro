@@ -1,0 +1,17 @@
+@use '../utils' as *;
+
+.settings-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: rem(30);
+	height: rem(30);
+	margin: rem(30) auto;
+	opacity: 0.5;
+	color: var(--text);
+	cursor: pointer;
+}
+
+.settings-btn:hover {
+	opacity: 1;
+}
