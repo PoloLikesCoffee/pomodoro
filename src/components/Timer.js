@@ -7,7 +7,7 @@ const Timer = ({
 	timeLeft,
 	buttonText,
 	setButtonText,
-	totalWidthBar,
+	widthBar,
 	totalTime,
 }) => {
 	// let displayText = timerMode === 'pomodoro' ? 'break!' : 'work!';
@@ -20,8 +20,6 @@ const Timer = ({
 		setButtonText(
 			buttonText === 'start' || buttonText === 'resume' ? 'pause' : 'resume'
 		);
-		// const progress = document.getElementById('progress');
-		// progress.style.width = -timeLeft * 100 + '%';
 	};
 
 	return (
@@ -31,7 +29,7 @@ const Timer = ({
 			<div className="progressive-bar-container">
 				<div
 					className="progressive-bar-container__bar-display"
-					style={{ width: `${totalWidthBar}%` }}
+					style={{ width: `${widthBar}%` }}
 				></div>
 			</div>
 

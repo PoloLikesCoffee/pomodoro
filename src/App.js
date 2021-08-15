@@ -85,8 +85,7 @@ function App() {
 				start={start}
 				setStart={setStart}
 				totalTime={secondsLeft}
-				// widthBar={(secondsLeft / 60) * 100}
-				totalWidthBar={(secondsLeft * 100) / secondsLeft}
+				widthBar={(secondsLeft / 60) * 100}
 			/>
 			<Menu
 				timerMode={timerMode}
@@ -100,8 +99,8 @@ function App() {
 				setStart={setStart}
 			/>
 			<SettingsButton openSettingsMenu={openSettingsMenu} />
-			{/* <Settings
-				visible={settingsVisible}
+			<Settings
+				settingsVisible={settingsVisible}
 				openSettingsMenu={openSettingsMenu}
 				pomodoroLength={pomodoroLength}
 				setPomodoroLength={setPomodoroLength}
@@ -111,7 +110,7 @@ function App() {
 				setLongBreakLength={setLongBreakLength}
 				timerMode={timerMode}
 				setSecondsLeft={setSecondsLeft}
-			/> */}
+			/>
 		</div>
 	);
 }

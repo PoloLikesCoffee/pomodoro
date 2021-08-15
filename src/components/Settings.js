@@ -3,7 +3,7 @@ import CloseIcon from '@material-ui/icons/Close';
 // import CheckIcon from '@material-ui/icons/Check';
 
 const Settings = ({
-	visible,
+	settingsVisible,
 	openSettingsMenu,
 	pomodoroLength,
 	setPomodoroLength,
@@ -33,7 +33,7 @@ const Settings = ({
 		}
 	};
 
-	if (visible) {
+	if (settingsVisible) {
 		return (
 			<div className="settings-container visible">
 				<div className="settings-container__content">
@@ -45,7 +45,6 @@ const Settings = ({
 					</div>
 					<form onSubmit={handleChangeSettings}>
 						<div className="settings-container__content__time">
-							<h3>Time (Minutes)</h3>
 							<div
 								action=""
 								className="settings-container__content__time__form"
@@ -80,7 +79,7 @@ const Settings = ({
 							</div>
 						</div>
 						<div className="settings-container__content__submit">
-							<button className="settings-container__btn"> Apply</button>
+							<button className="settings-container__btn">Apply</button>
 						</div>
 					</form>
 				</div>
