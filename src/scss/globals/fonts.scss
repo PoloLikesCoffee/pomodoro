@@ -1,10 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap');
 
 :root {
-	--font-current: 'Kumbh Sans', sans-serif;
-	--font-default: 'Kumbh Sans', sans-serif;
-	--font-roboto: 'Roboto Slab', serif;
-	--font-space: 'Space Mono', monospace;
+	--font-primary: 'Playfair Display', serif;
+	--font-secondary: 'Source Sans Pro', sans-serif;
 }

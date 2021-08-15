@@ -4,14 +4,18 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: rem(30);
-	height: rem(30);
 	margin: rem(30) auto;
-	opacity: 0.5;
-	color: var(--text);
 	cursor: pointer;
+	font-size: rem(20);
+	font-weight: 400;
+	color: var(--light-gray);
+
+	@include breakpoint-down(small) {
+		font-size: rem(20);
+	}
 }
 
 .settings-btn:hover {
-	opacity: 1;
+	font-weight: 700;
+	color: var(--dark-gray);
 }

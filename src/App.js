@@ -9,28 +9,38 @@ import Settings from './components/Settings';
 function App() {
 	const [settingsVisible, setSettingsVisible] = useState(false);
 	const [timerMode, setTimerMode] = useState('pomodoro');
-	const [pomodoroLength, setPomodoroLength] = useState(25);
-	const [shortBreakLength, setShortBreakLength] = useState(3);
+	const [pomodoroLength, setPomodoroLength] = useState(1);
+	const [shortBreakLength, setShortBreakLength] = useState(5);
 	const [longBreakLength, setLongBreakLength] = useState(15);
 	const [secondsLeft, setSecondsLeft] = useState(pomodoroLength * 60);
 	const [buttonText, setButtonText] = useState('start');
-	const [isActive, setIsActive] = useState(false);
+	const [start, setStart] = useState(false);
+	const [counterPomodoro, setCounterPomodoro] = useState(1);
 
 	useEffect(() => {
-		if (isActive) {
+		if (start) {
 			const interval = setInterval(() => {
 				setSecondsLeft((secondsLeft) => secondsLeft - 1);
 			}, 1000);
 			if (secondsLeft === 0) {
 				clearInterval(interval);
-				setIsActive(false);
+				setStart(false);
 				if (timerMode === 'pomodoro') {
-					setTimerMode('short break');
-					setSecondsLeft(shortBreakLength * 60);
-					setButtonText('start');
+					setCounterPomodoro(counterPomodoro + 1);
+					console.log(counterPomodoro);
+					if (counterPomodoro < 4) {
+						setTimerMode('short break');
+						setSecondsLeft(shortBreakLength * 60);
+						setButtonText('start');
+					} else if (counterPomodoro === 4) {
+						setCounterPomodoro(1);
+						setTimerMode('long break');
+						setSecondsLeft(longBreakLength * 60);
+						setButtonText('start');
+					}
 				} else if (timerMode === 'short break') {
-					setTimerMode('long break');
-					setSecondsLeft(longBreakLength * 60);
+					setTimerMode('pomodoro');
+					setSecondsLeft(pomodoroLength * 60);
 					setButtonText('start');
 				} else if (timerMode === 'long break') {
 					setTimerMode('pomodoro');
@@ -41,15 +51,16 @@ function App() {
 			return () => clearInterval(interval);
 		}
 	}, [
-		isActive,
+		start,
 		secondsLeft,
 		timerMode,
 		shortBreakLength,
 		longBreakLength,
 		pomodoroLength,
+		counterPomodoro,
 	]);
 
-	const toggleSettingsVisibility = (event) => {
+	const openSettingsMenu = (event) => {
 		setSettingsVisible(!settingsVisible);
 	};
 
@@ -66,6 +77,17 @@ function App() {
 	return (
 		<div className="pomodoro-app">
 			<Header />
+			<Timer
+				timerMode={timerMode}
+				timeLeft={convertToTime(secondsLeft)}
+				buttonText={buttonText}
+				setButtonText={setButtonText}
+				start={start}
+				setStart={setStart}
+				totalTime={secondsLeft}
+				// widthBar={(secondsLeft / 60) * 100}
+				totalWidthBar={(secondsLeft * 100) / secondsLeft}
+			/>
 			<Menu
 				timerMode={timerMode}
 				setTimerMode={setTimerMode}
@@ -75,20 +97,12 @@ function App() {
 				setButtonText={setButtonText}
 				setSecondsLeft={setSecondsLeft}
 				secondsLeft={secondsLeft}
-				setIsActive={setIsActive}
+				setStart={setStart}
 			/>
-			<Timer
-				timerMode={timerMode}
-				timeLeft={convertToTime(secondsLeft)}
-				buttonText={buttonText}
-				setButtonText={setButtonText}
-				isActive={isActive}
-				setIsActive={setIsActive}
-			/>
-			<SettingsButton toggleSettingsVisibility={toggleSettingsVisibility} />
-			<Settings
+			<SettingsButton openSettingsMenu={openSettingsMenu} />
+			{/* <Settings
 				visible={settingsVisible}
-				toggleSettingsVisibility={toggleSettingsVisibility}
+				openSettingsMenu={openSettingsMenu}
 				pomodoroLength={pomodoroLength}
 				setPomodoroLength={setPomodoroLength}
 				shortBreakLength={shortBreakLength}
@@ -97,7 +111,7 @@ function App() {
 				setLongBreakLength={setLongBreakLength}
 				timerMode={timerMode}
 				setSecondsLeft={setSecondsLeft}
-			/>
+			/> */}
 		</div>
 	);
 }

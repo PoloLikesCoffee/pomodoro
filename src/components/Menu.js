@@ -9,13 +9,13 @@ const Menu = ({
 	shortBreakLength,
 	longBreakLength,
 	setSecondsLeft,
-	setIsActive,
+	setStart,
 }) => {
 	const handleModeChange = (event) => {
 		// console.log(event.target.id);
 		setTimerMode(event.target.id);
 		setButtonText('start');
-		setIsActive(false);
+		setStart(false);
 		switch (event.target.id) {
 			case 'short break':
 				setSecondsLeft(shortBreakLength * 60);

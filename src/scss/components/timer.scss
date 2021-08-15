@@ -2,61 +2,70 @@
 
 .timer-container {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: rem(300);
-	height: rem(300);
-	border-radius: 50%;
-	margin: 0 auto;
-	background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
-	box-shadow: rem(-50) rem(-50) rem(80) #272c5a, rem(50) rem(50) rem(80) #121530;
+	padding: rem(10);
+	margin: rem(40) 0;
+	background-color: var(--white);
+	// position: relative;
+	// width: 100%;
 
-	&__display {
-		background-color: var(--background-timer);
-		width: rem(260);
-		height: rem(260);
-		border-radius: 50%;
-		display: flex;
-		flex-direction: column;
-		justify-items: center;
-		align-items: center;
-		position: relative;
-	}
-
-	.mode-text {
-		position: absolute;
-		top: rem(50);
-		font-family: var(--font-default);
-		font-weight: bold;
-		font-size: 16px;
-		text-transform: uppercase;
-		color: var(--text);
-		text-align: center;
-	}
-
-	span {
-		margin: auto;
-		font-size: rem(70);
-		font-weight: 700;
-		color: var(--text);
+	.display-time {
+		font-family: var(--font-secondary);
+		font-size: rem(100);
+		font-weight: 600;
+		color: var(--dark-gray);
 		display: flex;
 		justify-items: center;
 		align-items: center;
+		letter-spacing: rem(10);
+		margin-bottom: rem(15);
+
+		@include breakpoint-down(small) {
+			font-size: rem(70);
+		}
+	}
+
+	// .display-text {
+	// 	position: absolute;
+	// 	right: 0;
+	// }
+
+	.progressive-bar-container {
+		width: rem(450);
+		height: rem(5);
+		z-index: 9;
+		background-color: var(--light-gray);
+		transition: all 150ms cubic-bezier(0.46, 1.13, 0.67, 0.87);
+		margin-bottom: rem(15);
+
+		@include breakpoint-down(small) {
+			// width: rem(350);
+		}
+
+		&__bar-display {
+			height: rem(5);
+			width: 0;
+			background-color: var(--dark-gray);
+		}
 	}
 
 	.btn-start__pause {
-		position: absolute;
-		bottom: rem(50);
-		font-family: var(--font-default);
-		font-weight: bold;
-		font-size: 16px;
-		text-transform: uppercase;
-		width: rem(130);
-		height: rem(30);
-		cursor: pointer;
 		border: none;
-		color: var(--text);
-		text-align: center;
-		background-color: transparent;
+		background: none;
+		font-family: var(--font-secondary);
+		font-size: rem(40);
+		font-weight: 600;
+		color: var(--dark-gray);
+		cursor: pointer;
+
+		@include breakpoint-down(small) {
+			font-size: rem(30);
+		}
+	}
+
+	.btn-start__pause:hover {
+		color: var(--light-gray);
 	}
 }

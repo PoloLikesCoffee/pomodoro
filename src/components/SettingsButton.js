@@ -1,11 +1,9 @@
 import React from 'react';
 
-import SettingsIcon from '@material-ui/icons/Settings';
-
-const SettingsButton = ({ toggleSettingsVisibility }) => {
+const SettingsButton = ({ openSettingsMenu }) => {
 	return (
-		<div className="settings-btn" onClick={toggleSettingsVisibility}>
-			<SettingsIcon />
+		<div className="settings-btn" onClick={openSettingsMenu}>
+			Settings
 		</div>
 	);
 };

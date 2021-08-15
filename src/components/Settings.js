@@ -4,7 +4,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 const Settings = ({
 	visible,
-	toggleSettingsVisibility,
+	openSettingsMenu,
 	pomodoroLength,
 	setPomodoroLength,
 	shortBreakLength,
@@ -19,7 +19,7 @@ const Settings = ({
 		setPomodoroLength(event.target.pomodoro.value);
 		setShortBreakLength(event.target.shortBreak.value);
 		setLongBreakLength(event.target.longBreak.value);
-		toggleSettingsVisibility();
+		openSettingsMenu();
 
 		switch (timerMode) {
 			case 'short break':
@@ -39,7 +39,7 @@ const Settings = ({
 				<div className="settings-container__content">
 					<div className="settings-container__content__header">
 						<h2>Settings</h2>
-						<div className="close-btn" onClick={toggleSettingsVisibility}>
+						<div className="close-btn" onClick={openSettingsMenu}>
 							<CloseIcon />
 						</div>
 					</div>
@@ -79,53 +79,6 @@ const Settings = ({
 								/>
 							</div>
 						</div>
-						{/* <div className="settings-container__content__font">
-							<h3>Font</h3>
-							<div className="block-font">
-								<input type="radio" id="fontPref1" name="font" value="kumbh" />
-								<label htmlFor="fontPref1" className="font-kumbh">
-									Aa
-								</label>
-								<input type="radio" id="fontPref2" name="font" value="roboto" />
-								<label htmlFor="fontPref2" className="font-roboto">
-									Aa
-								</label>
-								<input type="radio" id="fontPref3" name="font" value="space" />
-								<label htmlFor="fontPref3" className="font-space">
-									Aa
-								</label>
-							</div>
-						</div>
-						<div className="settings-container__content__color">
-							<h3>Color</h3>
-							<div className="block-color">
-								<input
-									type="radio"
-									id="colorPref1"
-									name="color"
-									value="default"
-								/>
-								<label htmlFor="colorPref1" className="color-default">
-									<CheckIcon />
-								</label>
-
-								<input type="radio" id="colorPref2" name="color" value="blue" />
-								<label htmlFor="colorPref2" className="color-blue">
-									<CheckIcon />
-								</label>
-
-								<input
-									type="radio"
-									id="colorPref3"
-									name="color"
-									value="purple"
-								/>
-								<label htmlFor="colorPref3" className="color-purple">
-									<CheckIcon />
-								</label>
-							</div>
-						</div>
-						 */}
 						<div className="settings-container__content__submit">
 							<button className="settings-container__btn"> Apply</button>
 						</div>
