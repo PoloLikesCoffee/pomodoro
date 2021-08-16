@@ -10,21 +10,24 @@ const Menu = ({
 	longBreakLength,
 	setSecondsLeft,
 	setStart,
+	setBarLength,
 }) => {
 	const handleModeChange = (event) => {
-		// console.log(event.target.id);
 		setTimerMode(event.target.id);
 		setButtonText('start');
 		setStart(false);
 		switch (event.target.id) {
 			case 'short break':
 				setSecondsLeft(shortBreakLength * 60);
+				setBarLength((shortBreakLength * 60 * 450) / (shortBreakLength * 60));
 				break;
 			case 'long break':
 				setSecondsLeft(longBreakLength * 60);
+				setBarLength((longBreakLength * 60 * 450) / (longBreakLength * 60));
 				break;
 			default:
 				setSecondsLeft(pomodoroLength * 60);
+				setBarLength((pomodoroLength * 60 * 450) / (pomodoroLength * 60));
 		}
 	};
 

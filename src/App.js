@@ -5,47 +5,70 @@ import Menu from './components/Menu';
 import Timer from './components/Timer';
 import SettingsButton from './components/SettingsButton';
 import Settings from './components/Settings';
+import audio from './assets/ringSound.mp3';
 
 function App() {
 	const [settingsVisible, setSettingsVisible] = useState(false);
 	const [timerMode, setTimerMode] = useState('pomodoro');
-	const [pomodoroLength, setPomodoroLength] = useState(1);
+	const [pomodoroLength, setPomodoroLength] = useState(25);
 	const [shortBreakLength, setShortBreakLength] = useState(5);
 	const [longBreakLength, setLongBreakLength] = useState(15);
 	const [secondsLeft, setSecondsLeft] = useState(pomodoroLength * 60);
 	const [buttonText, setButtonText] = useState('start');
 	const [start, setStart] = useState(false);
 	const [counterPomodoro, setCounterPomodoro] = useState(1);
+	const [barLength, setBarLength] = useState((secondsLeft * 450) / secondsLeft);
+
+	const playAudio = () => {
+		new Audio(audio).play();
+	};
 
 	useEffect(() => {
 		if (start) {
 			const interval = setInterval(() => {
+				setBarLength(
+					(barLength) => ((secondsLeft - 1.1) * barLength) / secondsLeft
+				);
 				setSecondsLeft((secondsLeft) => secondsLeft - 1);
 			}, 1000);
+
+			document.title = `ポモドーロ : ${convertToTime(secondsLeft)}`;
+
 			if (secondsLeft === 0) {
+				playAudio();
 				clearInterval(interval);
 				setStart(false);
-				if (timerMode === 'pomodoro') {
-					setCounterPomodoro(counterPomodoro + 1);
-					console.log(counterPomodoro);
-					if (counterPomodoro < 4) {
-						setTimerMode('short break');
-						setSecondsLeft(shortBreakLength * 60);
+				switch (timerMode) {
+					case 'pomodoro':
+						setCounterPomodoro(counterPomodoro + 1);
+						if (counterPomodoro < 4) {
+							setTimerMode('short break');
+							setSecondsLeft(shortBreakLength * 60);
+							setBarLength(
+								(shortBreakLength * 60 * 450) / (shortBreakLength * 60)
+							);
+							setButtonText('start');
+						} else if (counterPomodoro === 4) {
+							setCounterPomodoro(1);
+							setTimerMode('long break');
+							setSecondsLeft(longBreakLength * 60);
+							setBarLength(
+								(longBreakLength * 60 * 450) / (longBreakLength * 60)
+							);
+							setButtonText('start');
+						}
+						break;
+					case 'short break':
+						setTimerMode('pomodoro');
+						setSecondsLeft(pomodoroLength * 60);
+						setBarLength((pomodoroLength * 60 * 450) / (pomodoroLength * 60));
 						setButtonText('start');
-					} else if (counterPomodoro === 4) {
-						setCounterPomodoro(1);
-						setTimerMode('long break');
-						setSecondsLeft(longBreakLength * 60);
+						break;
+					default:
+						setTimerMode('pomodoro');
+						setSecondsLeft(pomodoroLength * 60);
+						setBarLength((pomodoroLength * 60 * 450) / (pomodoroLength * 60));
 						setButtonText('start');
-					}
-				} else if (timerMode === 'short break') {
-					setTimerMode('pomodoro');
-					setSecondsLeft(pomodoroLength * 60);
-					setButtonText('start');
-				} else if (timerMode === 'long break') {
-					setTimerMode('pomodoro');
-					setSecondsLeft(pomodoroLength * 60);
-					setButtonText('start');
 				}
 			}
 			return () => clearInterval(interval);
@@ -58,6 +81,7 @@ function App() {
 		longBreakLength,
 		pomodoroLength,
 		counterPomodoro,
+		barLength,
 	]);
 
 	const openSettingsMenu = (event) => {
@@ -85,7 +109,7 @@ function App() {
 				start={start}
 				setStart={setStart}
 				totalTime={secondsLeft}
-				widthBar={(secondsLeft / 60) * 100}
+				barLength={barLength}
 			/>
 			<Menu
 				timerMode={timerMode}
@@ -97,6 +121,7 @@ function App() {
 				setSecondsLeft={setSecondsLeft}
 				secondsLeft={secondsLeft}
 				setStart={setStart}
+				setBarLength={setBarLength}
 			/>
 			<SettingsButton openSettingsMenu={openSettingsMenu} />
 			<Settings
@@ -110,6 +135,7 @@ function App() {
 				setLongBreakLength={setLongBreakLength}
 				timerMode={timerMode}
 				setSecondsLeft={setSecondsLeft}
+				setBarLength={setBarLength}
 			/>
 		</div>
 	);

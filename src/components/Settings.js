@@ -13,6 +13,7 @@ const Settings = ({
 	setLongBreakLength,
 	timerMode,
 	setSecondsLeft,
+	setBarLength,
 }) => {
 	const handleChangeSettings = (event) => {
 		event.preventDefault();
@@ -24,12 +25,24 @@ const Settings = ({
 		switch (timerMode) {
 			case 'short break':
 				setSecondsLeft(event.target.shortBreak.value * 60);
+				setBarLength(
+					(event.target.shortBreak.value * 60 * 450) /
+						(event.target.shortBreak.value * 60)
+				);
 				break;
 			case 'long break':
 				setSecondsLeft(event.target.longBreak.value * 60);
+				setBarLength(
+					(event.target.shortBreak.value * 60 * 450) /
+						(event.target.shortBreak.value * 60)
+				);
 				break;
 			default:
 				setSecondsLeft(event.target.pomodoro.value * 60);
+				setBarLength(
+					(event.target.shortBreak.value * 60 * 450) /
+						(event.target.shortBreak.value * 60)
+				);
 		}
 	};
 
