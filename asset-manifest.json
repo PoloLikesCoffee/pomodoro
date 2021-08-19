@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/pomodoro/static/css/main.f95e4315.chunk.css",
+    "main.js": "/pomodoro/static/js/main.7383a887.chunk.js",
+    "main.js.map": "/pomodoro/static/js/main.7383a887.chunk.js.map",
+    "runtime-main.js": "/pomodoro/static/js/runtime-main.55231dd3.js",
+    "runtime-main.js.map": "/pomodoro/static/js/runtime-main.55231dd3.js.map",
+    "static/js/2.d9caccfe.chunk.js": "/pomodoro/static/js/2.d9caccfe.chunk.js",
+    "static/js/2.d9caccfe.chunk.js.map": "/pomodoro/static/js/2.d9caccfe.chunk.js.map",
+    "index.html": "/pomodoro/index.html",
+    "static/css/main.f95e4315.chunk.css.map": "/pomodoro/static/css/main.f95e4315.chunk.css.map",
+    "static/js/2.d9caccfe.chunk.js.LICENSE.txt": "/pomodoro/static/js/2.d9caccfe.chunk.js.LICENSE.txt",
+    "static/media/clickSound.75b75cce.mp3": "/pomodoro/static/media/clickSound.75b75cce.mp3",
+    "static/media/ringSound.d1fae5ee.mp3": "/pomodoro/static/media/ringSound.d1fae5ee.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.55231dd3.js",
+    "static/js/2.d9caccfe.chunk.js",
+    "static/css/main.f95e4315.chunk.css",
+    "static/js/main.7383a887.chunk.js"
+  ]
+}
