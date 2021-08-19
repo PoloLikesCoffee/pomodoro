@@ -1,7 +1,7 @@
 # Project: Pomodoro App
 
 **Live Link**:
-👉 not yet
+👉 https://pololikescoffee.github.io/pomodoro/
 
 ## About
 
